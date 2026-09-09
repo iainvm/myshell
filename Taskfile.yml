@@ -1,0 +1,7 @@
+version: 3
+
+tasks:
+  run:
+    desc: Run the shell
+    cmds:
+      - qs -p ./shell
