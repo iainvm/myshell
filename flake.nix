@@ -20,7 +20,10 @@
   } @ inputs: let
     pkgs = import nixpkgs {system = "x86_64-linux";};
   in
-      flake-utils.lib.eachDefaultSystem (system: {
+    {
+      homeManagerModules.default = import ./nix/home-manager.nix;
+    }
+    // flake-utils.lib.eachDefaultSystem (system: {
       devShells = {
         default = pkgs.mkShell {
           shellHook = ''
