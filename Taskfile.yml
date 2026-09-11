@@ -4,4 +4,4 @@ tasks:
   run:
     desc: Run the shell
     cmds:
-      - qs -p ./shell
+      - qs -p ./qml
