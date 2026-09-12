@@ -1,26 +1,17 @@
 import Quickshell
-import Quickshell.Hyprland
 import QtQuick
 import qs.Theme
 import qs.Settings
 
-PanelWindow {
+Item {
     id: root
 
-    visible: Settings.isBarVisible // start hidden; toggle() flips this
-
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
-    implicitHeight: 32
-    color: Theme.mainBackgroundColor
+    implicitWidth: timeLabel.implicitWidth
+    implicitHeight: timeLabel.implicitHeight
 
     Text {
         id: timeLabel
         anchors.centerIn: parent
-        anchors.verticalCenter: parent.verticalCenter
         text: Qt.formatDateTime(new Date(), Settings.dateFormat)
         color: Theme.mainTextColor
         font.family: "monospace"
@@ -32,6 +23,9 @@ PanelWindow {
         running: true
         repeat: true
         triggeredOnStart: true
-        onTriggered: timeLabel.text = Qt.formatDateTime(new Date(), Settings.dateFormat)
+        onTriggered: timeLabel.text = Qt.formatDateTime(
+            new Date(),
+            Settings.dateFormat,
+        )
     }
 }

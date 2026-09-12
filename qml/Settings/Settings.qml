@@ -8,7 +8,7 @@ import Quickshell.Hyprland
 Singleton {
     id: root
 
-    property bool isBarVisible: false
+    property bool isBarVisible: true
     // property bool isDrawerVisible: false
 
     function toggle() {
