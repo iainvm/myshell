@@ -53,7 +53,7 @@ MouseArea {
         anchors.centerIn: parent
         anchors.verticalCenter: parent.verticalCenter
         color: Theme.mainTextColor
-        font.family: "Hack Nerd Font Mono"
+        font.family: Theme.iconFont
 
         text: {
             var icon = "icon" + (Math.floor(root.percentage / 10) * 10)
@@ -83,7 +83,7 @@ MouseArea {
 
         text: root.percentText
         color: Theme.mainTextColor
-        font.family: "Hack Nerd Font Mono"
+        font.family: Theme.iconFont
         font.pixelSize: 13
     }
 }
