@@ -56,20 +56,20 @@ MouseArea {
         font.family: "Hack Nerd Font Mono"
 
         text: {
-            var icon = "icon" + (Math.ceil(parent.percentage / 10) * 10 - 10)
+            var icon = "icon" + (Math.floor(root.percentage / 10) * 10)
             // Add Charging Icon
-            if (parent.charging) {
+            if (root.charging) {
                 icon = icon + "Charging"
             }
             // If protected 80% charge, replace icon
-            if (parent.pendingCharging) {
-                return parent.iconHealth
+            if (root.pendingCharging && root.percentage == 80) {
+                return root.iconHealth
             }
-            return parent[icon]
+            return root[icon]
         }
 
         font.pixelSize: {
-            if (parent.charging) return 29
+            if (root.charging) return 29
             return 18
         }
     }
