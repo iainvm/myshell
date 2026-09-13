@@ -4,6 +4,7 @@ import QtQuick
 import qs.Theme
 import qs.Settings
 import qs.Modules.Bar.Components.Battery
+import qs.Modules.Bar.Components.Bluetooth
 import qs.Modules.Bar.Components.DateTime
 
 PanelWindow {
@@ -24,10 +25,26 @@ PanelWindow {
         anchors.centerIn: parent
     }
 
-    Battery {
-        id: battery
+    Row {
+        id: rightSide
+        height: root.height
         anchors.right: parent.right
-        anchors.rightMargin: 12
-        anchors.verticalCenter: parent.verticalCenter
+
+        spacing: 5
+        layoutDirection: Qt.RightToLeft
+
+        Item {
+            id: spacer
+            width: 12
+            height: root.height
+        }
+
+        Battery {
+            id: battery
+        }
+
+        Bluetooth {
+            id: bluetooth
+        }
     }
 }

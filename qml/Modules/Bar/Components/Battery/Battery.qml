@@ -7,7 +7,7 @@ import qs.Settings
 MouseArea {
     id: root
 
-    implicitWidth: 25
+    implicitWidth: 10
     height: parent.height
 
     enabled: true
