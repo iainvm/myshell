@@ -10,6 +10,10 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
+
+    qml-language-server = {
+      url = "github:cushycush/qml-language-server";
+    };
   };
 
   outputs = {
@@ -29,8 +33,9 @@
           shellHook = ''
           '';
 
-          packages = with pkgs; [
-            quickshell
+          packages = [
+            pkgs.quickshell
+            inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
         };
       };
