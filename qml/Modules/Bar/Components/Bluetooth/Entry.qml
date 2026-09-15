@@ -8,9 +8,13 @@ Rectangle {
     id: root
     color: Theme.mainBackgroundColor
     implicitHeight: 32
-    anchors {
-        left: parent.left
-        right: parent.right
+
+    Component.onCompleted: {
+        // Ensure parent is ready before anchoring
+        if (parent) {
+            anchors.left = parent.left
+            anchors.right = parent.right
+        }
     }
 
     MouseArea{
@@ -18,21 +22,14 @@ Rectangle {
         anchors.fill: parent
 
         onClicked: {
-            console.log("name: " + name)
-            console.log("connected: " + connected)
-            console.log("state: " + device.state)
-            console.log("trusted: " + device.trusted)
-            console.log("paired: " + device.paired)
-            console.log("bonded: " + device.bonded)
-            console.log("Testing connection: " + connected)
-            console.log("Type of connection: " + typeof connected)
-            if (connected) {
-                console.log("TRYING TO DISCONNECT")
-                // data.disconnect()
-            } else {
-                console.log("TRYING TO CONNECT")
-                // data.connect()
+            // Sometimes headsets connect but don't fully connect
+            // Battery info isn't available, usually when the device auto-connects but isn't trusted
+            if (device.connected && !device.trusted && !device.batteryAvailable) {
+                device.disconnect()
+                device.connect()
             }
+            if (device.connected) device.disconnect()
+            if (!device.connected) device.connect()
         }
 
         RowLayout {
@@ -52,7 +49,7 @@ Rectangle {
             }
 
             Text {
-                text: connected ? "󰂱" : (device.paired ? "󰂯" : "󰂲")
+                text: device.connected ? "󰂱" : (device.paired ? "󰂯" : "󰂲")
                 font.family: Theme.iconFont
                 color: Theme.mainTextColor
                 font.pixelSize: 18

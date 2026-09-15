@@ -28,29 +28,24 @@ PanelWindow {
     property BluetoothAdapter adapter
     ListModel {
         id: filteredDevices
-        //TODO: add a field for device
         // ListElement {
-        //     name: "thing"
-        //     connected: false
-        //     device: null
+        //     name: string
+        //     https://quickshell.org/docs/v0.3.1/types/Quickshell.Bluetooth/BluetoothDevice/
+        //     device: BluetoothDevice
         // }
     }
 
     function filterDevices(filterText) {
         var devices = adapter.devices.values
-        // var filterText = search.text.toLowerCase()
         filteredDevices.clear()
 
-        for (var rep = 0; rep < 9; rep++) {
-            for (var i = 0; i < devices.length; i++) {
-                var item = devices[i]
-                if (item.name.toLowerCase().indexOf(filterText) !== -1) {
-                    filteredDevices.append({
-                            name: item.name,
-                            connected: item.connected,
-                            device: item,
-                    })
-                }
+        for (var i = 0; i < devices.length; i++) {
+            var item = devices[i]
+            if (item.name.toLowerCase().indexOf(filterText) !== -1) {
+                filteredDevices.set(i, {
+                        name: item.name,
+                        device: item,
+                })
             }
         }
     }
@@ -67,7 +62,6 @@ PanelWindow {
         z: 99
         TextField {
             anchors {
-                // top: parent.top
                 left: parent.left
                 right: parent.right
                 margins: 12
@@ -77,7 +71,6 @@ PanelWindow {
             color: Theme.mainTextColor
             font.family: Theme.textFont
             font.pixelSize: 14
-            // focus: true
 
             background: Rectangle {
                 color: Qt.rgba(1, 1, 1, 0.37)
@@ -91,7 +84,6 @@ PanelWindow {
     ListView {
         id: deviceList
         anchors {
-            // fill: parent
             top: searchBar.bottom
             left: parent.left
             right: parent.right
@@ -99,8 +91,5 @@ PanelWindow {
         }
         model: filteredDevices
         delegate: Entry {}
-
-        // headerPositioning: ListView.OverlayHeader
-        // header: searchHeader
     }
 }
