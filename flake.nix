@@ -34,6 +34,7 @@
           '';
 
           packages = [
+            pkgs.go-task
             pkgs.quickshell
             inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];

@@ -29,10 +29,11 @@ PanelWindow {
     ListModel {
         id: filteredDevices
         //TODO: add a field for device
-        ListElement {
-            name: "thing"
-            device: null
-        }
+        // ListElement {
+        //     name: "thing"
+        //     connected: false
+        //     device: null
+        // }
     }
 
     function filterDevices(filterText) {
@@ -44,7 +45,11 @@ PanelWindow {
             for (var i = 0; i < devices.length; i++) {
                 var item = devices[i]
                 if (item.name.toLowerCase().indexOf(filterText) !== -1) {
-                    filteredDevices.append(item)
+                    filteredDevices.append({
+                            name: item.name,
+                            connected: item.connected,
+                            device: item,
+                    })
                 }
             }
         }

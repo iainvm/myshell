@@ -20,14 +20,19 @@ Rectangle {
         onClicked: {
             console.log("name: " + name)
             console.log("connected: " + connected)
-            console.log("state: " + state)
-            console.log("trusted: " + trusted)
-            console.log("paired: " + paired)
-            console.log("bonded: " + bonded)
+            console.log("state: " + device.state)
+            console.log("trusted: " + device.trusted)
+            console.log("paired: " + device.paired)
+            console.log("bonded: " + device.bonded)
+            console.log("Testing connection: " + connected)
+            console.log("Type of connection: " + typeof connected)
             if (connected) {
-                data.connect()
+                console.log("TRYING TO DISCONNECT")
+                // data.disconnect()
+            } else {
+                console.log("TRYING TO CONNECT")
+                // data.connect()
             }
-            data.disconnect()
         }
 
         RowLayout {
@@ -47,7 +52,7 @@ Rectangle {
             }
 
             Text {
-                text: connected ? "󰂱" : (paired ? "󰂯" : "󰂲")
+                text: connected ? "󰂱" : (device.paired ? "󰂯" : "󰂲")
                 font.family: Theme.iconFont
                 color: Theme.mainTextColor
                 font.pixelSize: 18
