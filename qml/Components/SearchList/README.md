@@ -7,6 +7,7 @@ A search box above a list of items, filtered by what's typed.
 - The search box is focused when the list is created (turn off with `focusOnLoad`)
 - Items are filtered case-insensitively by the text `textOf` returns for them
 - Clicking a row, or hitting "Enter" in the search box (for the top result), emits `activated(item)`
+- The search box stays at the top while the rows scroll underneath it
 - Rows highlight on hover, and their content is supplied by the user of the list
 - Shows `emptyText` when there are no items, or `noMatchText` when nothing matches the search
 
@@ -30,6 +31,8 @@ SearchList {
 
 The `delegate` must declare `property var modelData` (or a stricter type, e.g. `property BluetoothDevice modelData`) to receive its item. It's not a `required` property, so it's briefly `null` while the row is created; guard against that (`modelData?.name ?? ""`).
 
+SearchList scrolls its own rows, so it needs a height (anchors, `height`, or a parent that sizes it, like MenuSwitcher does for its pages). Its implicit height is only the search box, so without one the rows have no room to show.
+
 If the file using SearchList uses its own `Icons.qml` next to it, either move the row into its own file (like Bluetooth's `Entry.qml`) or import SearchList with a qualifier (`import qs.Components.SearchList as Components`, then `Components.SearchList {}`). Otherwise SearchList's `Icons` singleton hides the local one.
 
 ## Properties
@@ -39,6 +42,7 @@ If the file using SearchList uses its own `Icons.qml` next to it, either move th
 | model           | list      | []                               | The items to search through, shown in the order given.             |
 | textOf          | function  | `item => item?.name ?? String(item)` | Returns the text an item is matched against.                   |
 | delegate        | Component | null                             | The content of each row.                                           |
+| spacing         | int       | 8                                | The gap between the search box and the list, and between rows.     |
 | placeholderText | string    | "Search"                         | Shown in the search box while it's empty.                          |
 | emptyText       | string    | "Nothing to show"                | Shown when `model` is empty.                                       |
 | noMatchText     | string    | "No matches"                     | Shown when `model` has items but none match the search.            |

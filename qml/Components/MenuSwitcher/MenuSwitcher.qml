@@ -165,9 +165,11 @@ Item {
     contentHeight: page.height
     boundsBehavior: Flickable.StopAtBounds
 
+    // Pages are at least as tall as the scroll area, so a page with its own scrolling (e.g. SearchList) can fill it, while taller pages scroll here
     Loader {
       id: page
       width: scroller.width
+      height: Math.max(scroller.height, item?.implicitHeight ?? 0)
       active: root.active && root.currentMenu !== null
       sourceComponent: root.currentMenu?.component ?? null
     }

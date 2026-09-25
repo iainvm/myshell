@@ -98,7 +98,7 @@ Singleton {
       //
       property JsonObject settings: JsonObject {
         // visible - If the settings panel is currently visible on screen
-        property bool visible: true
+        property bool visible: false
       }
     }
   }

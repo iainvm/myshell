@@ -8,6 +8,7 @@ A drop down menu that switches which menu is shown underneath it, in a scrollabl
 - Picking a menu from the list shows it and closes the list
 - Escape closes the list if it's open, otherwise it's passed on to the parent (e.g. to close a drawer)
 - Setting `active` to false destroys the current menu, so it's rebuilt fresh (e.g. clearing searches) when set back to true
+- Each menu is made at least as tall as the area under the button. Taller menus (their `implicitHeight`) scroll in MenuSwitcher's scroll area; a menu that scrolls itself (e.g. SearchList) keeps a small `implicitHeight` and fills the area instead
 
 ## Usage
 

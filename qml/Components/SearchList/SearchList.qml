@@ -1,7 +1,7 @@
 import QtQuick
 import qs.Themes
 
-Column {
+Item {
   id: root
 
   // model - The items to search through, shown in the order given
@@ -10,6 +10,8 @@ Column {
   property var textOf: item => item?.name ?? String(item)
   // delegate - The content of each row, it must declare `property var modelData` (or a stricter type) to receive its item
   property Component delegate
+  // spacing - The gap between the search box and the list, and between rows
+  property int spacing: 8
   // placeholderText - Shown in the search box while it's empty
   property string placeholderText: "Search"
   // emptyText - Shown when model has no items
@@ -31,7 +33,8 @@ Column {
     searchInput.forceActiveFocus()
   }
 
-  spacing: 8
+  // Only the search box counts towards the implicit height, so a parent that sizes pages to their content (e.g. MenuSwitcher) gives the list the remaining space and it scrolls its own rows under the search box
+  implicitHeight: searchBox.implicitHeight
 
   Component.onCompleted: {
     if (root.focusOnLoad) root.focusSearch()
@@ -39,7 +42,9 @@ Column {
 
   Rectangle {
     id: searchBox
-    width: parent.width
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
     implicitHeight: 36
     radius: 6
     color: Theme.surfaceColor
@@ -84,7 +89,10 @@ Column {
 
   Text {
     id: message
-    width: parent.width
+    anchors.top: searchBox.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.topMargin: root.spacing
     visible: root.results.length === 0
     horizontalAlignment: Text.AlignHCenter
     topPadding: 8
@@ -94,8 +102,16 @@ Column {
     text: root.query !== "" && root.model.length > 0 ? root.noMatchText : root.emptyText
   }
 
-  Repeater {
+  ListView {
     id: rows
+    anchors.top: searchBox.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    anchors.topMargin: root.spacing
+    clip: true
+    spacing: root.spacing
+    boundsBehavior: Flickable.StopAtBounds
     model: root.results
 
     delegate: MouseArea {
@@ -103,7 +119,7 @@ Column {
 
       required property var modelData
 
-      width: root.width
+      width: rows.width
       implicitHeight: Math.max(36, content.implicitHeight)
       hoverEnabled: true
       cursorShape: Qt.PointingHandCursor
