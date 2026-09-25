@@ -12,7 +12,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
+    home.packages = [
+      cfg.package
+      pkgs.upower
+      ];
 
     xdg.configFile."quickshell/myshell".source = ../qml;
 

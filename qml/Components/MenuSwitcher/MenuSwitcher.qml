@@ -15,6 +15,18 @@ Item {
 
   readonly property Menu currentMenu: menus.length > 0 ? menus[Math.min(currentIndex, menus.length - 1)] : null
 
+  // show - Switches to the menu with the given name (case-insensitive) and closes the list, returns false if there's no such menu
+  function show(name: string): bool {
+    const index = Array.from(root.menus).findIndex(menu => menu.name.toLowerCase() === name.toLowerCase())
+    if (index === -1) {
+      console.warn("MenuSwitcher: no menu named", name)
+      return false
+    }
+    root.currentIndex = index
+    root.open = false
+    return true
+  }
+
   onActiveChanged: open = false
 
   Keys.onEscapePressed: event => {

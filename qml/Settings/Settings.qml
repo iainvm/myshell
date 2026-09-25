@@ -109,6 +109,15 @@ Singleton {
     section.visible = !section.visible
   }
 
+  // settingsMenuRequested - Emitted by openSettings, the settings drawer switches to the menu with this name
+  signal settingsMenuRequested(string menu)
+
+  // openSettings - Opens the settings drawer on the menu with the given name, e.g. openSettings("Bluetooth")
+  function openSettings(menu: string) {
+    root.settingsMenuRequested(menu)
+    root.settings.visible = true
+  }
+
   GlobalShortcut {
     name: "toggleBar"
     description: "Show or hide the top bar"
@@ -119,5 +128,11 @@ Singleton {
     name: "toggleSettings"
     description: "Show or hide the settings drawer"
     onPressed: root.toggleVisibility(root.settings)
+  }
+
+  GlobalShortcut {
+    name: "openBluetoothSettings"
+    description: "Open the settings drawer on the Bluetooth menu"
+    onPressed: root.openSettings("Bluetooth")
   }
 }

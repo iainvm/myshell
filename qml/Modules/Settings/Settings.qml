@@ -31,6 +31,15 @@ PanelWindow {
     onCleared: root.close()
   }
 
+  Connections {
+    id: menuRequests
+    target: Settings
+
+    function onSettingsMenuRequested(menu: string) {
+      menuSwitcher.show(menu)
+    }
+  }
+
   Item {
     id: content
     anchors.fill: parent

@@ -47,3 +47,9 @@ Each entry is a `Menu` (`Menu.qml`, a `QtObject`), so a misspelt or wrong-typed 
 | open         | bool       | false   | If the drop down list is open. Reset to false when `active` changes.    |
 | active       | bool       | true    | If the current menu is instantiated.                                    |
 | currentMenu  | Menu       | null    | Read-only. The entry of `menus` currently shown.                        |
+
+## Functions
+
+| Name       | Description                                                                                                                           |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| show(name) | Switches to the menu with that name (case-insensitive) and closes the list. Returns false and logs a warning if there's no such menu. |
