@@ -51,3 +51,9 @@ Only the first location found is used. If `MYSHELL_SETTINGS_FILE` points at a fi
 | bar.time.enabled      | (boolean) true                      | If the Time submodule of the bar is enabled.                   |
 | bar.time.format       | (string) "ddd dd MMM  hh:mm:ss"     | Qt format string the Time submodule shows.                     |
 | bar.time.hoverFormat  | (string) "yyyy-MM-dd'T'HH:mm:ssttt" | Qt format string shown on hover (RFC 3339). Empty disables it. |
+
+## Settings
+
+| Name             | Default        | Description                                                        |
+|------------------|----------------|--------------------------------------------------------------------|
+| settings.visible | (boolean) true | If the settings drawer is currently visible (open on startup).     |

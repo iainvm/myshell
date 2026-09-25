@@ -8,17 +8,17 @@ import Quickshell.Hyprland
 Singleton {
   id: root
 
-  // settingsSearchLocations - Where to look for the settings file, in priority order
+  // settingsFileLocations - Where to look for the settings file, in priority order
   // An entry is empty when its environment variable isn't set, and is skipped
-  readonly property list<string> settingsSearchLocations: [
+  readonly property list<string> settingsFileLocations: [
   envPath("MYSHELL_SETTINGS_FILE", ""),
   envPath("XDG_CONFIG_HOME", "/myshell/settings.json"),
   envPath("HOME", "/.config/myshell/settings.json"),
   ]
 
   // path - JSON file whose keys override the defaults below, reloaded on change
-  // The first non-empty entry of settingsSearchLocations, even if that file doesn't exist
-  readonly property string path: settingsSearchLocations.find(location => location !== "") ?? ""
+  // The first non-empty entry of settingsFileLocations, even if that file doesn't exist
+  readonly property string path: settingsFileLocations.find(location => location !== "") ?? ""
 
   // envPath - The value of an environment variable with suffix appended, or "" if it's unset or empty
   function envPath(variable: string, suffix: string): string {
@@ -29,6 +29,7 @@ Singleton {
   // Expose settings, one alias per top-level section
   property alias shell: adapter.shell
   property alias bar: adapter.bar
+  property alias settings: adapter.settings
 
   FileView {
     id: file
@@ -91,16 +92,32 @@ Singleton {
           property int maxCharge: 100
         }
       }
+
+      //
+      // Settings Settings
+      //
+      property JsonObject settings: JsonObject {
+        // visible - If the settings panel is currently visible on screen
+        property bool visible: true
+      }
     }
   }
 
-  function toggleBar() {
-    bar.visible = !bar.visible
+  // toggle - Flips a bool setting, given the section it's in and its name, e.g. toggle(bar, "visible")
+  // A bool argument is only a copy of the value, so the section is needed to write the setting back
+  function toggleVisibility(section: JsonObject) {
+    section.visible = !section.visible
   }
 
   GlobalShortcut {
     name: "toggleBar"
     description: "Show or hide the top bar"
-    onPressed: root.toggleBar()
+    onPressed: root.toggleVisibility(root.bar)
+  }
+
+  GlobalShortcut {
+    name: "toggleSettings"
+    description: "Show or hide the settings drawer"
+    onPressed: root.toggleVisibility(root.settings)
   }
 }

@@ -15,9 +15,11 @@ qml
       Submodules  # Contains the submodules that can be toggled on and off on the parent module (e.g. Bluetooth)
         Bluetooth # A bluetooth icon that shows the connection status, and clicking it will show a searchable list to connect to paired devices
         ...
+    Settings      # A drawer on the right of the screen with a drop down menu page per submodule (e.g. Bluetooth)
     ...
   Components      # Generic components that can be reused throughout the shell
-    SearchList
+    MenuSwitcher  # A drop down menu that switches which menu is shown underneath it
+    SearchList    # A search box above a list of items filtered by what's typed
     SideDrawer
     TabbedPanel
     ...
