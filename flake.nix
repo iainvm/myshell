@@ -38,9 +38,12 @@
             pkgs.qt6.qtdeclarative
           ];
 
+          TZDIR = "${pkgs.tzdata}/share/zoneinfo";
+
           packages = [
             pkgs.go-task
             pkgs.quickshell
+            pkgs.upower
             inputs.qml-language-server.packages.${system}.default
           ];
         };

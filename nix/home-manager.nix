@@ -26,6 +26,7 @@ in {
       Service = {
         ExecStart = "${lib.getExe cfg.package} -c myshell";
         Restart = "on-failure";
+        Environment = [ "TZDIR=${pkgs.tzdata}/share/zoneinfo" ];
       };
       Install.WantedBy = [ "graphical-session.target" ];
     };

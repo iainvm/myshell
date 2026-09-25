@@ -8,7 +8,7 @@ My quickshell shell
 qml
   Modules         # Where all the modules that make up my shell live, each module has it's own folder inside here
     Bar           # A shell module, this one is the Bar that sits at the top of the screen
-      SubModules  # Contains the submodules that can be toggled on and off on the parent module (e.g. Bluetooth)
+      Submodules  # Contains the submodules that can be toggled on and off on the parent module (e.g. Bluetooth)
         Bluetooth # A bluetooth icon that shows the connection status, and clicking it will show a searchable list to connect to paired devices
         ...
     ...

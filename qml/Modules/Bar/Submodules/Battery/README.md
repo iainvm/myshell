@@ -1,0 +1,17 @@
+# Battery
+
+A battery icon for the Bar
+
+## Features
+
+- The icon shows the battery charged state
+- The icon shows whether battery charging state
+- Hovering over the icon will change to show battery percentage charge
+- If the battery is `pending-charge` and at a configurable `max_charge` percentage (default: `80`) then a configurable icon will display
+
+## Settings
+
+| Name      | Default        | Description                                |
+|-----------|----------------|--------------------------------------------|
+| enabled   | (boolean) true | If the battery submodule is enabled.       |
+| maxCharge | (int) 80       | The maximum charge the battery charges to. |
