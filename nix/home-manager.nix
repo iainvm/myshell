@@ -21,6 +21,7 @@ in {
         Description = "My Quickshell desktop shell";
         PartOf = [ "graphical-session.target" ];
         After = [ "graphical-session.target" ];
+        X-Restart-Triggers = [ "${../qml}" ];
       };
       Service = {
         ExecStart = "${lib.getExe cfg.package} -c myshell";

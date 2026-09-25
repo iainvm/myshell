@@ -21,22 +21,27 @@
     nixpkgs,
     flake-utils,
     ...
-  } @ inputs: let
-    pkgs = import nixpkgs {system = "x86_64-linux";};
-  in
+  } @ inputs:
     {
       homeManagerModules.default = import ./nix/home-manager.nix;
     }
-    // flake-utils.lib.eachDefaultSystem (system: {
+    // flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
       devShells = {
         default = pkgs.mkShell {
           shellHook = ''
           '';
 
+          QML_IMPORT_PATH = pkgs.lib.makeSearchPath "lib/qt-6/qml" [
+            pkgs.quickshell
+            pkgs.qt6.qtdeclarative
+          ];
+
           packages = [
             pkgs.go-task
             pkgs.quickshell
-            inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
+            inputs.qml-language-server.packages.${system}.default
           ];
         };
       };
