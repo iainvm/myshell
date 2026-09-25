@@ -6,12 +6,12 @@ import qs.Themes
 MouseArea {
     id: root
 
-    visible: Settings.barTimeEnabled
+    visible: Settings.bar.time.enabled
     implicitWidth: label.implicitWidth
     implicitHeight: label.implicitHeight
-    hoverEnabled: Settings.barTimeHoverFormat !== ""
+    hoverEnabled: Settings.bar.time.hoverFormat !== ""
 
-    readonly property string format: containsMouse ? Settings.barTimeHoverFormat : Settings.barTimeFormat
+    readonly property string format: containsMouse ? Settings.bar.time.hoverFormat : Settings.bar.time.format
 
     SystemClock {
         id: clock

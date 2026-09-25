@@ -10,7 +10,7 @@ PanelWindow {
   required property ShellScreen modelData
 
   screen: modelData
-  visible: Settings.barVisible
+  visible: Settings.bar.visible
 
   anchors {
     top: true

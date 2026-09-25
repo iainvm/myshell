@@ -8,9 +8,9 @@ ShellRoot {
 
   Variants {
     model: {
-      if (Settings.mainMonitor.length == 0) return Quickshell.screens
-      for (let i = 0; i < Settings.mainMonitor.length; i++){
-        let monitor = Settings.mainMonitor[i]
+      if (Settings.shell.mainMonitor.length == 0) return Quickshell.screens
+      for (let i = 0; i < Settings.shell.mainMonitor.length; i++){
+        let monitor = Settings.shell.mainMonitor[i]
         for (let j = 0; j < Quickshell.screens.length; j++){
           let screen = Quickshell.screens[j]
           if (screen.model == monitor) return [screen]

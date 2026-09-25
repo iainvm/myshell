@@ -3,5 +3,7 @@ version: 3
 tasks:
   run:
     desc: Run the shell
+    env:
+      MYSHELL_SETTINGS_FILE: ./shell-dev-settings.json
     cmds:
       - qs -p ./qml

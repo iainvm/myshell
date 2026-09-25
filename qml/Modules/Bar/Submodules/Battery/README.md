@@ -11,6 +11,8 @@ A battery icon for the Bar
 
 ## Settings
 
+Set under `bar.battery` in the [settings file](../../../../Settings/README.md#settings-file).
+
 | Name      | Default        | Description                                |
 |-----------|----------------|--------------------------------------------|
 | enabled   | (boolean) true | If the battery submodule is enabled.       |

@@ -2,6 +2,10 @@
 
 My quickshell shell
 
+## Settings
+
+Settings can be changed in `~/.config/myshell/settings.json`, or in any file passed with the `MYSHELL_SETTINGS_FILE` environment variable. See [Settings](./qml/Settings/README.md) for every setting, its default, and where the file is looked for.
+
 ## Organisation
 
 ```sh

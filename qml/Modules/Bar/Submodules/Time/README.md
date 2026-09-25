@@ -9,6 +9,8 @@ A time display for the Bar
 
 ## Settings
 
+Set under `bar.time` in the [settings file](../../../../Settings/README.md#settings-file).
+
 | Name        | Default                             | Description                                               |
 |-------------|-------------------------------------|-----------------------------------------------------------|
 | enabled     | (boolean) true                      | If the time submodule is enabled.                         |
