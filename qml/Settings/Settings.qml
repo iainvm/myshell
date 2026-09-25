@@ -80,6 +80,16 @@ Singleton {
           // hoverFormat - What time format is shown when hovering over the time
           property string hoverFormat: "yyyy-MM-dd'T'HH:mm:ssttt"
         }
+
+        //
+        // Bar Battery Settings
+        //
+        property JsonObject battery: JsonObject {
+          // enabled - If the bar renders the battery status
+          property bool enabled: true
+          // maxCharge - The percentage the battery stops charging at, shows the pending-charge icon when reached
+          property int maxCharge: 100
+        }
       }
     }
   }

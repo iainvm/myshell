@@ -3,6 +3,8 @@ import QtQuick
 import qs.Settings
 import qs.Themes
 import qs.Modules.Bar.Submodules.Time
+import qs.Modules.Bar.Submodules.Battery
+import qs.Modules.Bar.Submodules.Spacer
 
 PanelWindow {
   id: root
@@ -23,5 +25,19 @@ PanelWindow {
   Time {
     id: time
     anchors.centerIn: parent
+  }
+
+  Row {
+    id: right
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+
+    Battery {
+      id: battery
+    }
+
+    Spacer {
+      size: 12
+    }
   }
 }

@@ -43,10 +43,11 @@ Only the first location found is used. If `MYSHELL_SETTINGS_FILE` points at a fi
 
 ## Bar
 
-| Name                 | Default                             | Description                                                    |
-|----------------------|-------------------------------------|----------------------------------------------------------------|
-| bar.visible          | (boolean) true                      | If the bar is currently visible.                               |
-| bar.battery.enabled  | (boolean) true                      | If the Battery submodule of the bar in enabled.                |
-| bar.time.enabled     | (boolean) true                      | If the Time submodule of the bar is enabled.                   |
-| bar.time.format      | (string) "ddd dd MMM  hh:mm:ss"     | Qt format string the Time submodule shows.                     |
-| bar.time.hoverFormat | (string) "yyyy-MM-dd'T'HH:mm:ssttt" | Qt format string shown on hover (RFC 3339). Empty disables it. |
+| Name                  | Default                             | Description                                                    |
+|-----------------------|-------------------------------------|----------------------------------------------------------------|
+| bar.visible           | (boolean) true                      | If the bar is currently visible.                               |
+| bar.battery.enabled   | (boolean) true                      | If the Battery submodule of the bar in enabled.                |
+| bar.battery.maxCharge | (int) 80                            | The maximum charge the battery charges to.                     |
+| bar.time.enabled      | (boolean) true                      | If the Time submodule of the bar is enabled.                   |
+| bar.time.format       | (string) "ddd dd MMM  hh:mm:ss"     | Qt format string the Time submodule shows.                     |
+| bar.time.hoverFormat  | (string) "yyyy-MM-dd'T'HH:mm:ssttt" | Qt format string shown on hover (RFC 3339). Empty disables it. |

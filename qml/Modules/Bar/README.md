@@ -21,3 +21,4 @@ Submodules can be added to the Bar to add more features
 
 - [Time](./Submodules/Time/README.md)
 - [Battery](./Submodules/Battery/README.md)
+- [Spacer](./Submodules/Spacer/README.md)
