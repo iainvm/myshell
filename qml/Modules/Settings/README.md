@@ -8,7 +8,7 @@ It contains a drop down menu at the top, which when a page is picked the rest of
 - Settings split into pages, picked from a drop down menu (the generic [MenuSwitcher](../../Components/MenuSwitcher/README.md)), to only show what you need
 - Hides when focus is clicked off of it, or when Escape is pressed (Escape closes the drop down menu first if it's open)
 - Toggled with the `quickshell:toggleSettings` global shortcut
-- Opened on a specific menu with `Settings.openSettings("<menu name>")`, e.g. the `quickshell:openBluetoothSettings` global shortcut opens it on Bluetooth, and `quickshell:openNetworkSettings` on Network
+- Opened on a specific menu with `Settings.openSettings("<menu name>")`, e.g. the `quickshell:openBluetoothSettings` global shortcut opens it on Bluetooth, `quickshell:openNetworkSettings` on Network, and `quickshell:openApplicationsSettings` on Applications
 - Opens on the main monitor chosen by [`shell.mainMonitor`](../../Settings/README.md#shell), or on the focused monitor if the shell is on every monitor
 - Each time it opens the current page is rebuilt, so searches are cleared
 
@@ -26,3 +26,4 @@ Each submodule is a page in the drop down menu, added to the `menus` list in `Se
 
 - [Bluetooth](./Submodules/Bluetooth/README.md)
 - [Network](./Submodules/Network/README.md)
+- [Applications](./Submodules/Applications/README.md)

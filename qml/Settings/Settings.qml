@@ -141,4 +141,10 @@ Singleton {
     description: "Open the settings drawer on the Network menu"
     onPressed: root.openSettings("Network")
   }
+
+  GlobalShortcut {
+    name: "openApplicationsSettings"
+    description: "Open the settings drawer on the Applications menu"
+    onPressed: root.openSettings("Applications")
+  }
 }
