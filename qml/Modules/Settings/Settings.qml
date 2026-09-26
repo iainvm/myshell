@@ -5,6 +5,7 @@ import qs.Settings
 import qs.Themes
 import qs.Components.MenuSwitcher
 import qs.Modules.Settings.Submodules.Bluetooth
+import qs.Modules.Settings.Submodules.Network
 
 PanelWindow {
   id: root
@@ -56,6 +57,11 @@ PanelWindow {
         name: "Bluetooth"
         icon: "󰂯"
         component: Bluetooth {}
+      },
+      Menu {
+        name: "Network"
+        icon: "󰖩"
+        component: Network {}
       }
       ]
     }

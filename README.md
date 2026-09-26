@@ -20,6 +20,7 @@ qml
   Components      # Generic components that can be reused throughout the shell
     MenuSwitcher  # A drop down menu that switches which menu is shown underneath it
     SearchList    # A search box above a list of items filtered by what's typed
+    PromptPopup   # A popup asking for a line of text, e.g. a Wi-Fi password
     SideDrawer
     TabbedPanel
     ...

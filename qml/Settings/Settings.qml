@@ -135,4 +135,10 @@ Singleton {
     description: "Open the settings drawer on the Bluetooth menu"
     onPressed: root.openSettings("Bluetooth")
   }
+
+  GlobalShortcut {
+    name: "openNetworkSettings"
+    description: "Open the settings drawer on the Network menu"
+    onPressed: root.openSettings("Network")
+  }
 }

@@ -16,4 +16,5 @@ Singleton {
     readonly property color accentColor: palette.accentColor
     readonly property color backgroundColor: palette.backgroundColor
     readonly property color surfaceColor: palette.surfaceColor
+    readonly property color overlayColor: palette.overlayColor
 }
