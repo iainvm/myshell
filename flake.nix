@@ -44,6 +44,8 @@
             pkgs.go-task
             pkgs.quickshell
             pkgs.upower
+            pkgs.cliphist
+            pkgs.wl-clipboard
             inputs.qml-language-server.packages.${system}.default
           ];
         };

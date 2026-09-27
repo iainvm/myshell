@@ -9,12 +9,15 @@ import qs.Modules.SideMenu.Submodules.Network
 import qs.Modules.SideMenu.Submodules.Applications
 import qs.Modules.SideMenu.Submodules.Notifications
 import qs.Modules.SideMenu.Submodules.Volume
+import qs.Modules.SideMenu.Submodules.Clipboard
 
 PanelWindow {
   id: root
 
   // notificationHistory - Referenced so the history starts collecting notifications with the drawer, not when the page is first opened
   readonly property QtObject notificationHistory: NotificationHistory
+  // clipboardHistory - Referenced so the clipboard history is recorded from when the shell starts, not when the page is first opened
+  readonly property QtObject clipboardHistory: ClipboardHistory
 
   function close() {
     Settings.sideMenu.visible = false
@@ -68,6 +71,11 @@ PanelWindow {
         name: "Bluetooth"
         icon: "󰂯"
         component: Bluetooth {}
+      },
+      Menu {
+        name: "Clipboard"
+        icon: "󰅌"
+        component: Clipboard {}
       },
       Menu {
         name: "Network"

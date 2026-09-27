@@ -15,7 +15,9 @@ in {
     home.packages = [
       cfg.package
       pkgs.upower
-      ];
+    ];
+
+    services.cliphist.enable = true;
 
     xdg.configFile."quickshell/myshell".source = ../qml;
 

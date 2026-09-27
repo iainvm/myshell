@@ -31,6 +31,7 @@ Singleton {
   property alias bar: adapter.bar
   property alias sideMenu: adapter.sideMenu
   property alias notifications: adapter.notifications
+  property alias clipboard: adapter.clipboard
 
   FileView {
     id: file
@@ -111,6 +112,14 @@ Singleton {
         // timestampFormat - Qt format string for when a notification was received, shown when hovering over it
         property string timestampFormat: "yyyy-MM-dd HH:mm:ss"
       }
+
+      //
+      // Clipboard Settings
+      //
+      property JsonObject clipboard: JsonObject {
+        // historySize - How many of the most recent clipboard entries are shown in the history, cliphist itself decides how many are stored
+        property int historySize: 50
+      }
     }
   }
 
@@ -169,5 +178,11 @@ Singleton {
     name: "openVolumeSettings"
     description: "Open the side menu on the Volume menu"
     onPressed: root.openSideMenu("Volume")
+  }
+
+  GlobalShortcut {
+    name: "openClipboardSettings"
+    description: "Open the side menu on the Clipboard menu"
+    onPressed: root.openSideMenu("Clipboard")
   }
 }
