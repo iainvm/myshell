@@ -7,9 +7,13 @@ import qs.Components.MenuSwitcher
 import qs.Modules.Settings.Submodules.Bluetooth
 import qs.Modules.Settings.Submodules.Network
 import qs.Modules.Settings.Submodules.Applications
+import qs.Modules.Settings.Submodules.Notifications
 
 PanelWindow {
   id: root
+
+  // notificationHistory - Referenced so the history starts collecting notifications with the drawer, not when the page is first opened
+  readonly property QtObject notificationHistory: NotificationHistory
 
   function close() {
     Settings.settings.visible = false
@@ -68,6 +72,11 @@ PanelWindow {
         name: "Applications"
         icon: "󰀻"
         component: Applications {}
+      },
+      Menu {
+        name: "Notifications"
+        icon: "󰂚"
+        component: Notifications {}
       }
       ]
     }

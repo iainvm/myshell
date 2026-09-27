@@ -99,6 +99,16 @@ Singleton {
       property JsonObject settings: JsonObject {
         // visible - If the settings panel is currently visible on screen
         property bool visible: false
+
+        //
+        // Settings Notifications Settings
+        //
+        property JsonObject notifications: JsonObject {
+          // historySize - How many of the most recent notifications are kept in the history
+          property int historySize: 10
+          // timestampFormat - Qt format string for when a notification was received, shown when hovering over it
+          property string timestampFormat: "yyyy-MM-dd HH:mm:ss"
+        }
       }
     }
   }
@@ -146,5 +156,11 @@ Singleton {
     name: "openApplicationsSettings"
     description: "Open the settings drawer on the Applications menu"
     onPressed: root.openSettings("Applications")
+  }
+
+  GlobalShortcut {
+    name: "openNotificationsSettings"
+    description: "Open the settings drawer on the Notifications menu"
+    onPressed: root.openSettings("Notifications")
   }
 }

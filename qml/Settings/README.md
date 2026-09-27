@@ -54,6 +54,8 @@ Only the first location found is used. If `MYSHELL_SETTINGS_FILE` points at a fi
 
 ## Settings
 
-| Name             | Default        | Description                                                        |
-|------------------|----------------|--------------------------------------------------------------------|
-| settings.visible | (boolean) true | If the settings drawer is currently visible (open on startup).     |
+| Name                                   | Default                        | Description                                                            |
+|----------------------------------------|--------------------------------|------------------------------------------------------------------------|
+| settings.visible                       | (boolean) true                 | If the settings drawer is currently visible (open on startup).         |
+| settings.notifications.historySize     | (int) 10                       | How many of the most recent notifications are kept in the history.     |
+| settings.notifications.timestampFormat | (string) "yyyy-MM-dd HH:mm:ss" | Qt format string for when a notification was received, shown on hover. |
