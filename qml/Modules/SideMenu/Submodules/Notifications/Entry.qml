@@ -97,7 +97,7 @@ Rectangle {
         text: {
           const received = root.notification?.time ?? 0
           return root.hovered
-            ? Qt.formatDateTime(new Date(received), Settings.settings.notifications.timestampFormat)
+            ? Qt.formatDateTime(new Date(received), Settings.notifications.timestampFormat)
             : root.since(received)
         }
       }

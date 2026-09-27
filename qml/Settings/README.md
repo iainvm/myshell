@@ -52,10 +52,15 @@ Only the first location found is used. If `MYSHELL_SETTINGS_FILE` points at a fi
 | bar.time.format       | (string) "ddd dd MMM  hh:mm:ss"     | Qt format string the Time submodule shows.                     |
 | bar.time.hoverFormat  | (string) "yyyy-MM-dd'T'HH:mm:ssttt" | Qt format string shown on hover (RFC 3339). Empty disables it. |
 
-## Settings
+## Side Menu
 
-| Name                                   | Default                        | Description                                                            |
-|----------------------------------------|--------------------------------|------------------------------------------------------------------------|
-| settings.visible                       | (boolean) true                 | If the settings drawer is currently visible (open on startup).         |
-| settings.notifications.historySize     | (int) 10                       | How many of the most recent notifications are kept in the history.     |
-| settings.notifications.timestampFormat | (string) "yyyy-MM-dd HH:mm:ss" | Qt format string for when a notification was received, shown on hover. |
+| Name             | Default         | Description                                              |
+|------------------|-----------------|----------------------------------------------------------|
+| sideMenu.visible | (boolean) false | If the side menu is currently visible (open on startup). |
+
+## Notifications
+
+| Name                          | Default                        | Description                                                            |
+|-------------------------------|--------------------------------|------------------------------------------------------------------------|
+| notifications.historySize     | (int) 10                       | How many of the most recent notifications are kept in the history.     |
+| notifications.timestampFormat | (string) "yyyy-MM-dd HH:mm:ss" | Qt format string for when a notification was received, shown on hover. |

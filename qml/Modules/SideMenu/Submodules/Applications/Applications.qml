@@ -14,7 +14,7 @@ SearchList {
 
   function launch(entry: DesktopEntry) {
     entry.execute()
-    Settings.settings.visible = false
+    Settings.sideMenu.visible = false
   }
 
   textOf: entry => entry.name

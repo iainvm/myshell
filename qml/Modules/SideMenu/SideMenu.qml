@@ -4,11 +4,11 @@ import QtQuick
 import qs.Settings
 import qs.Themes
 import qs.Components.MenuSwitcher
-import qs.Modules.Settings.Submodules.Bluetooth
-import qs.Modules.Settings.Submodules.Network
-import qs.Modules.Settings.Submodules.Applications
-import qs.Modules.Settings.Submodules.Notifications
-import qs.Modules.Settings.Submodules.Volume
+import qs.Modules.SideMenu.Submodules.Bluetooth
+import qs.Modules.SideMenu.Submodules.Network
+import qs.Modules.SideMenu.Submodules.Applications
+import qs.Modules.SideMenu.Submodules.Notifications
+import qs.Modules.SideMenu.Submodules.Volume
 
 PanelWindow {
   id: root
@@ -17,10 +17,10 @@ PanelWindow {
   readonly property QtObject notificationHistory: NotificationHistory
 
   function close() {
-    Settings.settings.visible = false
+    Settings.sideMenu.visible = false
   }
 
-  visible: Settings.settings.visible
+  visible: Settings.sideMenu.visible
   focusable: true
   color: Theme.backgroundColor
 
@@ -42,7 +42,7 @@ PanelWindow {
     id: menuRequests
     target: Settings
 
-    function onSettingsMenuRequested(menu: string) {
+    function onSideMenuRequested(menu: string) {
       menuSwitcher.show(menu)
     }
   }

@@ -3,7 +3,7 @@ import Quickshell.Hyprland
 import QtQuick
 import qs.Settings
 import qs.Modules.Bar
-import qs.Modules.Settings
+import qs.Modules.SideMenu
 
 ShellRoot {
   id: root
@@ -28,8 +28,8 @@ ShellRoot {
     }
   }
 
-  Settings {
-    id: settings
+  SideMenu {
+    id: sideMenu
     screen: {
       if (root.screens.length == 1) return root.screens[0]
       const focused = Hyprland.focusedMonitor

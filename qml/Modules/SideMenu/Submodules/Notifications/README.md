@@ -18,7 +18,7 @@ The notifications settings show the history of the most recently received notifi
 
 ## Settings
 
-Set under `settings.notifications` in the [settings file](../../../../Settings/README.md#settings-file).
+Set under `notifications` in the [settings file](../../../../Settings/README.md#settings-file).
 
 | Name            | Default                        | Description                                                            |
 |-----------------|--------------------------------|------------------------------------------------------------------------|

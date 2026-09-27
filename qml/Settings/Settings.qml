@@ -29,7 +29,8 @@ Singleton {
   // Expose settings, one alias per top-level section
   property alias shell: adapter.shell
   property alias bar: adapter.bar
-  property alias settings: adapter.settings
+  property alias sideMenu: adapter.sideMenu
+  property alias notifications: adapter.notifications
 
   FileView {
     id: file
@@ -94,21 +95,21 @@ Singleton {
       }
 
       //
-      // Settings Settings
+      // Side Menu Settings
       //
-      property JsonObject settings: JsonObject {
-        // visible - If the settings panel is currently visible on screen
+      property JsonObject sideMenu: JsonObject {
+        // visible - If the side menu is currently visible on screen
         property bool visible: false
+      }
 
-        //
-        // Settings Notifications Settings
-        //
-        property JsonObject notifications: JsonObject {
-          // historySize - How many of the most recent notifications are kept in the history
-          property int historySize: 10
-          // timestampFormat - Qt format string for when a notification was received, shown when hovering over it
-          property string timestampFormat: "yyyy-MM-dd HH:mm:ss"
-        }
+      //
+      // Notifications Settings
+      //
+      property JsonObject notifications: JsonObject {
+        // historySize - How many of the most recent notifications are kept in the history
+        property int historySize: 10
+        // timestampFormat - Qt format string for when a notification was received, shown when hovering over it
+        property string timestampFormat: "yyyy-MM-dd HH:mm:ss"
       }
     }
   }
@@ -119,13 +120,13 @@ Singleton {
     section.visible = !section.visible
   }
 
-  // settingsMenuRequested - Emitted by openSettings, the settings drawer switches to the menu with this name
-  signal settingsMenuRequested(string menu)
+  // sideMenuRequested - Emitted by openSideMenu, the side menu switches to the menu with this name
+  signal sideMenuRequested(string menu)
 
-  // openSettings - Opens the settings drawer on the menu with the given name, e.g. openSettings("Bluetooth")
-  function openSettings(menu: string) {
-    root.settingsMenuRequested(menu)
-    root.settings.visible = true
+  // openSideMenu - Opens the side menu on the menu with the given name, e.g. openSideMenu("Bluetooth")
+  function openSideMenu(menu: string) {
+    root.sideMenuRequested(menu)
+    root.sideMenu.visible = true
   }
 
   GlobalShortcut {
@@ -135,38 +136,38 @@ Singleton {
   }
 
   GlobalShortcut {
-    name: "toggleSettings"
-    description: "Show or hide the settings drawer"
-    onPressed: root.toggleVisibility(root.settings)
+    name: "toggleSideMenu"
+    description: "Show or hide the side menu"
+    onPressed: root.toggleVisibility(root.sideMenu)
   }
 
   GlobalShortcut {
     name: "openBluetoothSettings"
-    description: "Open the settings drawer on the Bluetooth menu"
-    onPressed: root.openSettings("Bluetooth")
+    description: "Open the side menu on the Bluetooth menu"
+    onPressed: root.openSideMenu("Bluetooth")
   }
 
   GlobalShortcut {
     name: "openNetworkSettings"
-    description: "Open the settings drawer on the Network menu"
-    onPressed: root.openSettings("Network")
+    description: "Open the side menu on the Network menu"
+    onPressed: root.openSideMenu("Network")
   }
 
   GlobalShortcut {
     name: "openApplicationsSettings"
-    description: "Open the settings drawer on the Applications menu"
-    onPressed: root.openSettings("Applications")
+    description: "Open the side menu on the Applications menu"
+    onPressed: root.openSideMenu("Applications")
   }
 
   GlobalShortcut {
     name: "openNotificationsSettings"
-    description: "Open the settings drawer on the Notifications menu"
-    onPressed: root.openSettings("Notifications")
+    description: "Open the side menu on the Notifications menu"
+    onPressed: root.openSideMenu("Notifications")
   }
 
   GlobalShortcut {
     name: "openVolumeSettings"
-    description: "Open the settings drawer on the Volume menu"
-    onPressed: root.openSettings("Volume")
+    description: "Open the side menu on the Volume menu"
+    onPressed: root.openSideMenu("Volume")
   }
 }

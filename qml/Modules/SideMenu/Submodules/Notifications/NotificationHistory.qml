@@ -9,7 +9,7 @@ Singleton {
   id: root
 
   // size - How many notifications are kept, the newest first
-  readonly property int size: Math.max(0, Settings.settings.notifications.historySize)
+  readonly property int size: Math.max(0, Settings.notifications.historySize)
   // entries - The received notifications, newest first, as plain objects so they outlive the notification itself
   // Each has: appName, appIcon, summary, body, time (milliseconds since the epoch)
   readonly property var entries: JSON.parse(persistent.entries).slice(0, root.size)
