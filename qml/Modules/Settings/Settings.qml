@@ -8,6 +8,7 @@ import qs.Modules.Settings.Submodules.Bluetooth
 import qs.Modules.Settings.Submodules.Network
 import qs.Modules.Settings.Submodules.Applications
 import qs.Modules.Settings.Submodules.Notifications
+import qs.Modules.Settings.Submodules.Volume
 
 PanelWindow {
   id: root
@@ -59,6 +60,11 @@ PanelWindow {
       active: root.visible
       menus: [
       Menu {
+        name: "Applications"
+        icon: "󰀻"
+        component: Applications {}
+      },
+      Menu {
         name: "Bluetooth"
         icon: "󰂯"
         component: Bluetooth {}
@@ -69,14 +75,14 @@ PanelWindow {
         component: Network {}
       },
       Menu {
-        name: "Applications"
-        icon: "󰀻"
-        component: Applications {}
-      },
-      Menu {
         name: "Notifications"
         icon: "󰂚"
         component: Notifications {}
+      },
+      Menu {
+        name: "Volume"
+        icon: "󰕾"
+        component: Volume {}
       }
       ]
     }

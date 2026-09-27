@@ -21,6 +21,8 @@ qml
     MenuSwitcher  # A drop down menu that switches which menu is shown underneath it
     SearchList    # A search box above a list of items filtered by what's typed
     PromptPopup   # A popup asking for a line of text, e.g. a Wi-Fi password
+    DropDown      # A button that opens a list of items to pick one from
+    Slider        # A horizontal slider for picking a value in a range, e.g. a volume
     SideDrawer
     TabbedPanel
     ...

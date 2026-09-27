@@ -163,4 +163,10 @@ Singleton {
     description: "Open the settings drawer on the Notifications menu"
     onPressed: root.openSettings("Notifications")
   }
+
+  GlobalShortcut {
+    name: "openVolumeSettings"
+    description: "Open the settings drawer on the Volume menu"
+    onPressed: root.openSettings("Volume")
+  }
 }
