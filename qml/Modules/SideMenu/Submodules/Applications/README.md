@@ -12,4 +12,4 @@ The applications settings show a searchable list of the installed applications (
 - Favourites are saved by the shell to `applications.json` in Quickshell's state folder (`~/.local/state/quickshell/by-shell/<shell id>/`), so they're kept across restarts
 - When you click an application it launches it and the settings drawer closes
 - When searching and the user hits "Enter" it will launch the top result
-- Opened directly with the `quickshell:openApplicationsSettings` global shortcut
+- Opened directly with the `quickshell:openApplicationLauncher` global shortcut

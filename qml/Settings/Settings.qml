@@ -163,13 +163,13 @@ Singleton {
   }
 
   GlobalShortcut {
-    name: "openApplicationsSettings"
+    name: "openApplicationLauncher"
     description: "Open the side menu on the Applications menu"
     onPressed: root.openSideMenu("Applications")
   }
 
   GlobalShortcut {
-    name: "openNotificationsSettings"
+    name: "openNotifications"
     description: "Open the side menu on the Notifications menu"
     onPressed: root.openSideMenu("Notifications")
   }
@@ -181,7 +181,7 @@ Singleton {
   }
 
   GlobalShortcut {
-    name: "openClipboardSettings"
+    name: "openClipboardHistory"
     description: "Open the side menu on the Clipboard menu"
     onPressed: root.openSideMenu("Clipboard")
   }

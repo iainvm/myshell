@@ -14,7 +14,7 @@ The notifications settings show the history of the most recently received notifi
 - The body is limited to 4 lines of text
 - Hovering over a notification highlights its outline, shows the rest of its body, and changes the time since to the time it was received (see `timestampFormat`)
 - If the app has no icon (or it isn't in the icon theme) a placeholder icon is shown
-- Opened directly with the `quickshell:openNotificationsSettings` global shortcut
+- Opened directly with the `quickshell:openNotifications` global shortcut
 
 ## Settings
 
