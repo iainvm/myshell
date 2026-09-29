@@ -1,5 +1,4 @@
 import Quickshell
-import Quickshell.Hyprland
 import QtQuick
 import qs.Settings
 import qs.Themes
@@ -34,11 +33,23 @@ PanelWindow {
   }
   implicitWidth: 360
 
-  HyprlandFocusGrab {
-    id: focusGrab
-    windows: [root]
-    active: root.visible
-    onCleared: root.close()
+  // hasBeenFocused - Set once the compositor gives the menu keyboard focus, so it only closes on a real loss of focus, not while it's still opening
+  property bool hasBeenFocused: false
+
+  onVisibleChanged: if (!visible) hasBeenFocused = false
+
+  // A focus grab would also block scrolling on other windows, so the menu instead closes when keyboard focus moves elsewhere, e.g. clicking a window
+  Connections {
+    id: focusTracker
+    target: content.Window
+
+    function onActiveChanged() {
+      if (content.Window.active) {
+        root.hasBeenFocused = true
+      } else if (root.hasBeenFocused) {
+        root.close()
+      }
+    }
   }
 
   Connections {

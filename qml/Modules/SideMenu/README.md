@@ -6,7 +6,8 @@ It contains a drop down menu at the top, which when a page is picked the rest of
 ## Features
 
 - Split into pages, picked from a drop down menu (the generic [MenuSwitcher](../../Components/MenuSwitcher/README.md)), to only show what you need
-- Hides when focus is clicked off of it, or when Escape is pressed (Escape closes the drop down menu first if it's open)
+- Hides when focus is clicked off of it (e.g. clicking a window), or when Escape is pressed (Escape closes the drop down menu first if it's open)
+- Doesn't grab the pointer, so windows can still be scrolled while it's open
 - Toggled with the `quickshell:toggleSideMenu` global shortcut
 - Opened on a specific menu with `Settings.openSideMenu("<menu name>")`, e.g. the `quickshell:openBluetoothSettings` global shortcut opens it on Bluetooth, `quickshell:openNetworkSettings` on Network, `quickshell:openApplicationLauncher` on Applications, `quickshell:openNotifications` on Notifications, and `quickshell:openVolumeSettings` on Volume
 - Opens on the currently focused monitor, even if it isn't one chosen by [`shell.mainMonitor`](../../Settings/README.md#shell)
