@@ -31,10 +31,9 @@ ShellRoot {
   SideMenu {
     id: sideMenu
     screen: {
-      if (root.screens.length == 1) return root.screens[0]
       const focused = Hyprland.focusedMonitor
-      for (let i = 0; i < root.screens.length; i++){
-        if (focused && root.screens[i].name == focused.name) return root.screens[i]
+      for (let i = 0; i < Quickshell.screens.length; i++){
+        if (focused && Quickshell.screens[i].name == focused.name) return Quickshell.screens[i]
       }
       return root.screens[0]
     }

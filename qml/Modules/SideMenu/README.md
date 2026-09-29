@@ -9,7 +9,7 @@ It contains a drop down menu at the top, which when a page is picked the rest of
 - Hides when focus is clicked off of it, or when Escape is pressed (Escape closes the drop down menu first if it's open)
 - Toggled with the `quickshell:toggleSideMenu` global shortcut
 - Opened on a specific menu with `Settings.openSideMenu("<menu name>")`, e.g. the `quickshell:openBluetoothSettings` global shortcut opens it on Bluetooth, `quickshell:openNetworkSettings` on Network, `quickshell:openApplicationLauncher` on Applications, `quickshell:openNotifications` on Notifications, and `quickshell:openVolumeSettings` on Volume
-- Opens on the main monitor chosen by [`shell.mainMonitor`](../../Settings/README.md#shell), or on the focused monitor if the shell is on every monitor
+- Opens on the currently focused monitor, even if it isn't one chosen by [`shell.mainMonitor`](../../Settings/README.md#shell)
 - Each time it opens the current page is rebuilt, so searches are cleared
 
 ## Settings
