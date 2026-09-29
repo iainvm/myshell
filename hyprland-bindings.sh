@@ -8,3 +8,4 @@ hyprctl eval 'hl.bind("ALT + A", hl.dsp.global("quickshell:openApplicationLaunch
 hyprctl eval 'hl.bind("ALT + M", hl.dsp.global("quickshell:openNotifications"))'
 hyprctl eval 'hl.bind("ALT + V", hl.dsp.global("quickshell:openVolumeSettings"))'
 hyprctl eval 'hl.bind("ALT + C", hl.dsp.global("quickshell:openClipboardHistory"))'
+hyprctl eval 'hl.bind("ALT + S", hl.dsp.global("quickshell:openSystemMenu"))'

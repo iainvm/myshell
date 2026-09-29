@@ -65,3 +65,14 @@ Only the first location found is used. If `MYSHELL_SETTINGS_FILE` points at a fi
 |-------------------------------|--------------------------------|------------------------------------------------------------------------|
 | notifications.historySize     | (int) 10                       | How many of the most recent notifications are kept in the history.     |
 | notifications.timestampFormat | (string) "yyyy-MM-dd HH:mm:ss" | Qt format string for when a notification was received, shown on hover. |
+
+## System
+
+| Name                    | Default                                                               | Description                                                                                         |
+|-------------------------|-----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| system.refreshInterval  | (int) 1000                                                            | How often, in milliseconds, the CPU usage, temperatures and processes refresh while the page is open. |
+| system.processCount     | (int) 5                                                               | How many of the busiest processes are listed.                                                       |
+| system.powerOffCommand  | (list) ["systemctl", "poweroff"]                                      | Command run by the Power Off button.                                                                |
+| system.hibernateCommand | (list) ["systemctl", "hibernate"]                                     | Command run by the Hibernate button.                                                                |
+| system.lockCommand      | (list) ["sh", "-c", "loginctl lock-session \"$(loginctl show-user ...)\""] | Command run by the Lock button. Asks logind to lock the graphical session, a screen locker must be listening for it. |
+| system.logoutCommand    | (list) ["hyprctl", "dispatch", "hl.dsp.exit()"]                       | Command run by the Logout button, exits Hyprland.                                                   |

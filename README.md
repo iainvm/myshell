@@ -23,6 +23,7 @@ qml
     PromptPopup   # A popup asking for a line of text, e.g. a Wi-Fi password
     DropDown      # A button that opens a list of items to pick one from
     Slider        # A horizontal slider for picking a value in a range, e.g. a volume
+    Gauge         # A round gauge showing a percentage, e.g. the CPU usage
     SideDrawer
     TabbedPanel
     ...

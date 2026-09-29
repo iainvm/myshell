@@ -32,6 +32,7 @@ Singleton {
   property alias sideMenu: adapter.sideMenu
   property alias notifications: adapter.notifications
   property alias clipboard: adapter.clipboard
+  property alias system: adapter.system
 
   FileView {
     id: file
@@ -122,6 +123,24 @@ Singleton {
         // historySize - How many of the most recent clipboard entries are shown in the history, cliphist itself decides how many are stored
         property int historySize: 50
       }
+
+      //
+      // System Settings
+      //
+      property JsonObject system: JsonObject {
+        // refreshInterval - How often, in milliseconds, the CPU usage, temperatures and processes are refreshed while the System menu is open
+        property int refreshInterval: 5000
+        // processCount - How many of the busiest processes are listed
+        property int processCount: 5
+        // powerOffCommand - Command run by the Power Off button
+        property list<string> powerOffCommand: ["systemctl", "poweroff"]
+        // hibernateCommand - Command run by the Hibernate button
+        property list<string> hibernateCommand: ["systemctl", "hibernate"]
+        // lockCommand - Command run by the Lock button, asks logind to lock the user's graphical session, which a screen locker must be listening for
+        property list<string> lockCommand: ["sh", "-c", "loginctl lock-session \"$(loginctl show-user \"$USER\" -p Display --value)\""]
+        // logoutCommand - Command run by the Logout button, exits Hyprland (using its Lua dispatcher syntax)
+        property list<string> logoutCommand: ["hyprctl", "dispatch", "hl.dsp.exit()"]
+      }
     }
   }
 
@@ -186,5 +205,11 @@ Singleton {
     name: "openClipboardHistory"
     description: "Open the side menu on the Clipboard menu"
     onPressed: root.openSideMenu("Clipboard")
+  }
+
+  GlobalShortcut {
+    name: "openSystemMenu"
+    description: "Open the side menu on the System menu"
+    onPressed: root.openSideMenu("System")
   }
 }

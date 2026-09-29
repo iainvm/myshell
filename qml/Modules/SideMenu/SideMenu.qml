@@ -9,6 +9,7 @@ import qs.Modules.SideMenu.Submodules.Applications
 import qs.Modules.SideMenu.Submodules.Notifications
 import qs.Modules.SideMenu.Submodules.Volume
 import qs.Modules.SideMenu.Submodules.Clipboard
+import qs.Modules.SideMenu.Submodules.System
 
 PanelWindow {
   id: root
@@ -97,6 +98,11 @@ PanelWindow {
         name: "Notifications"
         icon: "󰂚"
         component: Notifications {}
+      },
+      Menu {
+        name: "System"
+        icon: "󰐥"
+        component: System {}
       },
       Menu {
         name: "Volume"
