@@ -46,6 +46,7 @@
             pkgs.upower
             pkgs.cliphist
             pkgs.wl-clipboard
+            pkgs.app2unit
             inputs.qml-language-server.packages.${system}.default
           ];
         };

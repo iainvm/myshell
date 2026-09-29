@@ -12,8 +12,17 @@ SearchList {
     .sort((first, second) => (Favourites.isFavourite(second.id) - Favourites.isFavourite(first.id))
       || first.name.localeCompare(second.name))
 
+  // launch - Starts the application in its own systemd unit through app2unit, so it isn't
+  // part of the shell's service and survives the shell being stopped or restarted
   function launch(entry: DesktopEntry) {
-    entry.execute()
+    const command = entry.runInTerminal
+      ? ["app2unit", "--", Settings.shell.terminal, ...entry.command]
+      : ["app2unit", "--", ...entry.command]
+
+    Quickshell.execDetached({
+      command: command,
+      workingDirectory: entry.workingDirectory
+    })
     Settings.sideMenu.visible = false
   }
 

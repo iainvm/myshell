@@ -63,6 +63,8 @@ Singleton {
         // If empty the shell will render to all monitors
         // If populated it will render to the first monitor if finds that matches that model
         property list<string> mainMonitor: []
+        // terminal - Terminal command used to run applications that need one (desktop entries with Terminal=true)
+        property string terminal: "kitty"
       }
 
       //

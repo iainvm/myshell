@@ -11,5 +11,7 @@ The applications settings show a searchable list of the installed applications (
 - Clicking the star on the right of an application adds it to, or removes it from, the favourites
 - Favourites are saved by the shell to `applications.json` in Quickshell's state folder (`~/.local/state/quickshell/by-shell/<shell id>/`), so they're kept across restarts
 - When you click an application it launches it and the settings drawer closes
+- Applications are launched with [app2unit](https://github.com/Vladimir-csp/app2unit) in their own systemd unit, so they keep running when the shell is stopped or restarted (`systemctl --user stop myshell`)
+- Applications that need a terminal (`Terminal=true`) are run in `shell.terminal`
 - When searching and the user hits "Enter" it will launch the top result
 - Opened directly with the `quickshell:openApplicationLauncher` global shortcut

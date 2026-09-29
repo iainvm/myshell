@@ -15,6 +15,7 @@ in {
     home.packages = [
       cfg.package
       pkgs.upower
+      pkgs.app2unit
     ];
 
     services.cliphist.enable = true;

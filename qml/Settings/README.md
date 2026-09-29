@@ -40,6 +40,7 @@ Only the first location found is used. If `MYSHELL_SETTINGS_FILE` points at a fi
 | Name              | Default   | Description                                                                                                                                                                                  |
 |-------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | shell.mainMonitor | (list) [] | Priority list of monitor models (the `model:` line in `hyprctl monitors`). The shell shows on the first one connected. If the list is empty or none are connected, it shows on all monitors. |
+| shell.terminal    | (string) "kitty" | Terminal command used to run applications that need one (desktop entries with `Terminal=true`). |
 
 ## Bar
 
