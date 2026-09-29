@@ -6,9 +6,11 @@ A search box above a list of items, filtered by what's typed.
 
 - The search box is focused when the list is created (turn off with `focusOnLoad`)
 - Items are filtered case-insensitively by the text `textOf` returns for them
-- Clicking a row, or hitting "Enter" in the search box (for the top result), emits `activated(item)`
+- "Up" and "Down" in the search box move the selected row (the top result is selected whenever the results change), and the list scrolls to keep it in view
+- Hovering a row selects it
+- Clicking a row, or hitting "Enter" in the search box (for the selected row), emits `activated(item)`
 - The search box stays at the top while the rows scroll underneath it
-- Rows highlight on hover, and their content is supplied by the user of the list
+- The selected row is highlighted, and row content is supplied by the user of the list
 - Shows `emptyText` when there are no items, or `noMatchText` when nothing matches the search
 
 ## Usage
@@ -49,10 +51,12 @@ If the file using SearchList uses its own `Icons.qml` next to it, either move th
 | focusOnLoad     | bool      | true                             | If the search box takes keyboard focus when created.               |
 | query           | read-only | ""                               | The lowercased search text.                                        |
 | results         | read-only | []                               | The items of `model` matching the search.                          |
+| currentIndex    | read-only | 0                                | The index in `results` of the selected row, -1 when there are none. |
 
 ## Signals and functions
 
 | Name              | Description                                                                 |
 |-------------------|-----------------------------------------------------------------------------|
-| activated(item)   | A row was clicked, or Enter was pressed with at least one result.            |
+| activated(item)   | A row was clicked, or Enter was pressed with a row selected.                 |
+| select(index)     | Selects the row at `index` in `results` (clamped) and scrolls it into view.  |
 | focusSearch()     | Gives the search box keyboard focus.                                         |

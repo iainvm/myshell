@@ -26,11 +26,25 @@ Item {
   // results - The items of model matching the search
   readonly property var results: model.filter(item => String(textOf(item)).toLowerCase().includes(query))
 
-  // activated - Emitted when a row is clicked, or for the top result when Enter is pressed in the search box
+  // currentIndex - The index in results of the selected row, moved with Up/Down and hover, reset to the top result when the results change
+  readonly property int currentIndex: rows.currentIndex
+
+  // activated - Emitted when a row is clicked, or for the selected row when Enter is pressed in the search box
   signal activated(var item)
 
   function focusSearch() {
     searchInput.forceActiveFocus()
+  }
+
+  function select(index) {
+    if (root.results.length === 0) return
+    rows.currentIndex = Math.max(0, Math.min(index, root.results.length - 1))
+    rows.positionViewAtIndex(rows.currentIndex, ListView.Contain)
+  }
+
+  onResultsChanged: {
+    rows.currentIndex = root.results.length > 0 ? 0 : -1
+    rows.positionViewAtBeginning()
   }
 
   // Only the search box counts towards the implicit height, so a parent that sizes pages to their content (e.g. MenuSwitcher) gives the list the remaining space and it scrolls its own rows under the search box
@@ -72,8 +86,10 @@ Item {
       font.family: Theme.textFont
       font.pixelSize: 14
       clip: true
+      Keys.onUpPressed: root.select(rows.currentIndex - 1)
+      Keys.onDownPressed: root.select(rows.currentIndex + 1)
       onAccepted: {
-        if (root.results.length > 0) root.activated(root.results[0])
+        if (rows.currentIndex >= 0 && rows.currentIndex < root.results.length) root.activated(root.results[rows.currentIndex])
       }
 
       Text {
@@ -118,19 +134,21 @@ Item {
       id: row
 
       required property var modelData
+      required property int index
 
       width: rows.width
       implicitHeight: Math.max(36, content.implicitHeight)
       hoverEnabled: true
       cursorShape: Qt.PointingHandCursor
       onClicked: root.activated(modelData)
+      onPositionChanged: rows.currentIndex = index
 
       Rectangle {
         id: rowBackground
         anchors.fill: parent
         radius: 6
         color: Theme.surfaceColor
-        visible: row.containsMouse
+        visible: row.ListView.isCurrentItem
       }
 
       Loader {
