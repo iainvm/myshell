@@ -13,14 +13,19 @@ SearchList {
       || first.name.localeCompare(second.name))
 
   // launch - Starts the application in its own systemd unit through app2unit, so it isn't
-  // part of the shell's service and survives the shell being stopped or restarted
+  // part of the shell's service and survives the shell being stopped or restarted.
+  // It goes through the user's login shell because the shell runs as a systemd service,
+  // whose environment lacks the login session variables. Without them, shells the app
+  // spawns (e.g. VSCodium's terminal) re-run NixOS's /etc/set-environment, which resets
+  // PATH and drops environments the app injected, like direnv's
   function launch(entry: DesktopEntry) {
-    const command = entry.runInTerminal
-      ? ["app2unit", "--", Settings.shell.terminal, ...entry.command]
-      : ["app2unit", "--", ...entry.command]
+    const application = entry.runInTerminal
+      ? [Settings.shell.terminal, ...entry.command]
+      : entry.command
+    const loginShell = Quickshell.env("SHELL") || "/bin/sh"
 
     Quickshell.execDetached({
-      command: command,
+      command: [loginShell, "-l", "-c", "exec app2unit -- \"$@\"", "app2unit", ...application],
       workingDirectory: entry.workingDirectory
     })
     Settings.sideMenu.visible = false
